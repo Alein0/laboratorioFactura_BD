@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplicacion para generar piedra</title>
-
-
 </head>
 <body>
+    <form action="/views/inicioSesion.php" method="post">
      <div>
             <label>Usuario: </label>
             <input type="text" name="usuario" required>
@@ -16,7 +15,11 @@
             <label>Contraseña: </label>
             <input type="pwd" name="contraseña" required>
         </div>
-        </form>
+        <div>
+        <input type="submit" value="Iniciar sesión">
+        </div>
+        </form>  
+        
     <table>
         <thead>
             <tr>
@@ -34,5 +37,7 @@
             }
             ?>
         </tbody>
+        </table>
+       
     </body>
 </html>
