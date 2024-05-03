@@ -13,13 +13,12 @@ $usuario = new Usuario();
 $usuario = $_POST["usuario"];
 $contraseña = $_POST["contraseña"];
 
-$sql = "SELECT * FROM usuarios WHERE usuario='$usuario' AND contraseña='$contraseña'";
-$result = $conn->query($sql);
+$sqls = "SELECT * FROM usuarios WHERE usuario='$usuario' AND pwd='$contraseña'";
+$result = $controller->read($sqls);
 
-if ($result->num_rows > 0) {
-    echo "Inicio de sesión exitoso!";
+if ($result) {
+    echo '<h2>Inicio de sesión exitoso!</h2>';
 } else {
-    echo "Usuario y/o contraseña incorrectos. Inténtalo de nuevo.";
+    echo '<h2>Usuario y/o contraseña incorrectos. Inténtalo de nuevo.</h2>';
 }
-
 ?> 

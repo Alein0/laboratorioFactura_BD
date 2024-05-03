@@ -6,7 +6,7 @@
     <title>Aplicacion para generar piedra</title>
 </head>
 <body>
-    <form action="/views/inicioSesion.php" method="post">
+    <form action="views/inicioSesion.php" method="post">
      <div>
             <label>Usuario: </label>
             <input type="text" name="usuario" required>
@@ -23,18 +23,18 @@
     <table>
         <thead>
             <tr>
-                <th>Usuario</th>
-                <th>Contraseña</th>
+               <th>Usuario</th>
+               <th>Contraseña</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            foreach ($contactos as $item) {
-                echo '<tr>';
-                echo '  <td>' . $item->get('usuario') . '</td>';
-                echo '  <td>' . $item->get('contraseña') . '</td>';
-                echo '</tr>';
-            }
+         //   foreach ($contactos as $item) {
+         //       echo '<tr>';
+         //       echo '  <td>' . $item->get('usuario') . '</td>';
+         //       echo '  <td>' . $item->get('contraseña') . '</td>';
+         //       echo '</tr>';
+         //   }
             ?>
         </tbody>
         </table>
