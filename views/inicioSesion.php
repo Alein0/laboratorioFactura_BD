@@ -19,6 +19,6 @@ $result = $controller->read($sqls);
 if ($result) {
     echo '<h2>Inicio de sesión exitoso!</h2>';
 } else {
-    echo '<h2>Usuario y/o contraseña incorrectos. Inténtalo de nuevo.</h2>';
+    echo '<h2 id="mensaje-error">Usuario y/o contraseña incorrectos. Inténtalo de nuevo.</h2>';
 }
-?> 
+?>
