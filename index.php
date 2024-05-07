@@ -16,7 +16,7 @@
     <div class="container">
      <div>
      <div >
-        <img width="100" height="100" src="https://cdn-icons-png.freepik.com/512/8738/8738039.png">
+        <img src="img/inicio.png" class="imgsesion">
         </div>
             <label>Usuario: </label>
             <input class="formulario" type="text" name="usuario" placeholder="Ingrese su usuario por favor" required>
