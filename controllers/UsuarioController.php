@@ -1,28 +1,22 @@
 <?php
+namespace app\controllers;
 
-namespace App\controllers;
+use app\models\Usuario;
 
-use App\models\Usuario;
-
-class UsuarioController
-{
-    function read($sqls)
-    {
-        $dataBase = new DataBaseController();
-        $sql = $sqls;
-        $result = $dataBase->execSql($sql);
-        $usuarios = [];
-        if ($result->num_rows == 0) {
-            return $usuarios;
+class UsuarioController {
+    function validarUsuario($usuario) {
+        return $usuario->getUsuario() == 'admin' && $usuario->getPwd() == '12345';
+    }
+    
+    function validarSesion() {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
         }
-        while ($item = $result->fetch_assoc()) {
-            $usuario = new Usuario();
-            $usuario->set('usuario', $item['usuario']);
-            $usuario->set('pwd', $item['pwd']);
-            array_push($usuarios, $usuario);
+
+        if (empty($_SESSION['iniciarSesion'])) {
+            header('Location: ../index.php');
+            exit();
         }
-        $dataBase->close();
-        return $usuarios;
     }
 }
-
+?>

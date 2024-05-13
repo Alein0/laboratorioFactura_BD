@@ -1,33 +1,36 @@
 <?php
-include '../models/Model.php';
-include '../models/Usuario.php';
+require '../models/Usuario.php';
 include '../controllers/DataBaseController.php';
-include '../controllers/UsuarioController.php';
+require '../controllers/UsuarioController.php';
 
-use App\controllers\UsuarioController;
-use App\models\Usuario;
+use app\models\Usuario;
+use app\controllers\UsuarioController;
 
-$controller = new UsuarioController();
 $usuario = new Usuario();
-
-$usuario = $_POST["usuario"];
-$contraseña = $_POST["contraseña"];
-
-$sqls = "SELECT * FROM usuarios WHERE usuario='$usuario' AND pwd='$contraseña'";
-$result = $controller->read($sqls);
+$usuario->setUsuario($_POST['usuario']); 
+$usuario->setPwd($_POST['contraseña']); 
+$controlador = new UsuarioController();
+$iniciarSesion = $controlador->validarUsuario($usuario);
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de sesion</title>
+    <title>Validar sesion</title>
 </head>
-
 <body>
-    <h1><?php echo $result ? 'Inicio de sesión exitoso!' :
-     'Usuario y/o contraseña incorrectos. Inténtalo de nuevo. <br><a href="../index.php">Volver</a>'; ?></h1>
+    <?php
+        if($iniciarSesion){
+            session_start();
+            $_SESSION['iniciarSesion'] = true;
+            header('Location: inicio.php');
+        }else{
+            echo '<h1> Datos incorrectos</h1>';
+            echo '<br>';
+            echo '<a href="../index.php">Volver</a>';
+        }
+    ?>
 </body>
-
 </html>

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\controllers;
+namespace app\controllers;
 
 use mysqli;
-
+use App\models\Clientes;
 class DataBaseController
 {
     private $host = 'localhost';
