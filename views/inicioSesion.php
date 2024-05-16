@@ -25,7 +25,7 @@ $iniciarSesion = $controlador->validarUsuario($usuario);
         if($iniciarSesion){
             session_start();
             $_SESSION['iniciarSesion'] = true;
-            header('Location: inicio.php');
+            header('Location: menu.php');
         }else{
             echo '<h1> Datos incorrectos</h1>';
             echo '<br>';

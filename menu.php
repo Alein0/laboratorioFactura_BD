@@ -8,15 +8,15 @@
 </head>
 <body>
     <header>
-        <h1>Menú</h1>   
+        <h1>Menú
+        </h1>   
     </header>
     <main>
         <section>
             <div class="container">
                 <nav class="menu">
                     <ul>
-                        <li><a href="menuClientes.php">Clientes</a></li>
-                        <li><a href="#">Productos</a></li>
+                        <li><a href="views/compraProductos.php">Productos</a></li>
                         <li><a href="#">Facturas</a></li>
                         <li><a href="views/cerrarSesion.php">Cerrar sesión</a></li> <!-- Enlace al archivo PHP para cerrar sesión -->
                     </ul>

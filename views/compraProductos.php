@@ -24,26 +24,35 @@ $articulos = $controller->read();
     <table>
         <thead>
             <tr>
+                <th>Seleccionar</th>
                 <th>Nombre</th>
                 <th>precio</th>
+                <th>Cantidad</th>
             </tr>
         </thead>
         <tbody>
+        <form action="generarFactura.php" method="post">
             <?php
             foreach ($articulos as $item) {
                 echo '<tr>';
+                echo '  <td>';
+                ?>
+                <input type="checkbox" name="selec" id= "<?php $item->get('id')?>">
+                <?php
+                echo '  </td>';
                 echo '  <td>' . $item->get('nombre') . '</td>';
                 echo '  <td>' . $item->get('precio') . '</td>';
                 echo '  <td>';
-                echo '      <a href="views/formularioContacto.php?id='.$item->get('id').'">Modificar</a>';
-                echo '  </td>';
-                echo '  <td>';
-                echo '      <a href="views/confirmarEliminacionContacto.php?id='.$item->get('id').'">Eliminar</a>';
+                ?>
+                <input type="number" name="cant" id="<?php $item->get('id')?>">
+                <?php
                 echo '  </td>';
                 echo '</tr>';
             }
             ?>
         </tbody>
     </table>
+            <input class="enviar" type="submit" value="Comprar">
+        </form>
 </body>
 </html>
