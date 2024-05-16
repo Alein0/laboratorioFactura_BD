@@ -8,7 +8,7 @@ use app\controllers\UsuarioController;
 
 $usuario = new Usuario();
 $usuario->setUsuario($_POST['usuario']); 
-$usuario->setPwd($_POST['contraseña']); 
+$usuario->setPwd($_POST['pwd']); 
 $controlador = new UsuarioController();
 $iniciarSesion = $controlador->validarUsuario($usuario);
 ?>

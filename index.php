@@ -24,7 +24,7 @@
         <div>
             <label>Contraseña: </label>
            
-            <input class="formulario" type="passwordd" name="contraseña" placeholder="Ingrese su contraseña por favor" required>
+            <input class="formulario" type="password" name="pwd" placeholder="Ingrese su contraseña por favor" required>
         </div>
         <div> <br>
         <input class="enviar" type="submit" value="Iniciar sesión">
