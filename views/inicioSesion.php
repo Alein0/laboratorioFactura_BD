@@ -25,12 +25,10 @@ $iniciarSesion = $controlador->validarUsuario($usuario);
         if($iniciarSesion){
             session_start();
             $_SESSION['iniciarSesion'] = true;
-            header('Location: menu.php');
+            header('Location: ../views/menu.php');
         }else{
             echo '<h1> Datos incorrectos</h1>';
             echo '<br>';
             echo '<a href="../index.php">Volver</a>';
         }
     ?>
-</body>
-</html>

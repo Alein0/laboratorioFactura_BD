@@ -5,23 +5,46 @@ include '../controllers/DataBaseController.php';
 include '../controllers/ClienteController.php';
 
 use App\controllers\ClienteController;
+use App\models\Clientes;
 
 $controller = new ClienteController();
 
-//este archivo va a ser para verificar si ya estan registrados los clientes
-//si está, que siga con lo siguiente que será generar la factura (que lo deje generar xd)
-//si no está, que diga un mensage (no esta registrado) y tenga un boton 
-//de volver que lo devuleva al generar factura y otro
-//que diga registrar y mande esos datos del cliente a otro que haga que los registre
+$cliente = new Clientes();
+$cliente->set('id', $_POST['id'] ?? null);
+$cliente->set('nombreCompleto', $_POST['nombre']);
+$cliente->set('tipoDocumento', $_POST['tipoDocumento']);
+$cliente->set('numeroDocumento', $_POST['numeroDocumento']);
+$cliente->set('email', $_POST['email']);
+$cliente->set('telefono', $_POST['telefono']);
+
+$clienteExiste = $controller->clienteExiste($cliente->get('numeroDocumento'));
+
+if ($clienteExiste) {
+    $result = false;
+    $mensaje = 'El cliente ya se había ingresado';
+} else {
+    $result = empty($cliente->get('id'))
+        ? $controller->create($cliente)
+        : $controller->update($cliente);
+    $mensaje = $result ? 'Datos guardados' : 'No se pudo guardar el registro';
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Datos Cliente</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Cliente</title>
 </head>
 <body>
-  
+    <h1><?php echo $mensaje; ?></h1>
+    <br>
+    <a href="menu.php">>Volver</a>
+    <?php if ($result) : ?>
+        <br>
+        <a href="CreacionFactura.php">Generar Factura</a>
+    <?php endif; ?>
 </body>
 </html>
+

@@ -1,19 +1,21 @@
+
 <!DOCTYPE html>
-<html lang="es"> 
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/index.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+
     <title>Aplicacion para generar facturas</title>
 </head>
 <body>
     <header>
-        <h1>Generar Factura</h1>   
+        <h1>Clientes</h1>
     </header>
     <main>
     <section>
     <div class="container">
-    <form action="views/verificarCliente.php" method="post">
+    <form action="verificarCliente.php" method="post">
         <div>
             <label>Nombre y apellidos: </label>
             <input class="formulario" type="text" name="nombre" placeholder="Ingrese su nombre completo" required>
@@ -28,20 +30,19 @@
         </div>
         <div>
             <label>Numero de documento: </label>
-            <input class="formulario" type="text" name="numDocumento" placeholder="Ingrese su documento" required>
+            <input class="formulario" type="text" name="numeroDocumento" placeholder="Ingrese su documento" required>
         </div>
-       
         <div>
             <label>Telefono: </label>
             <input class="formulario" type="text" name="telefono" placeholder="Ingrese su numero de telefono" required>
         </div>
         <div>
             <label>Email: </label>
-            <input class="formulario" type="email" name="correo" placeholder="Ingrese su correo por favor" required>
+            <input class="formulario" type="email" name="email" placeholder="Ingrese su correo por favor" required>
         </div>
         <div>
             <br>
-            <input class="enviar" type="submit" value="Generar Factura">
+            <input class="enviar" type="submit" value="Guardar datos">
         </div>
     </form>
     </div>
@@ -49,3 +50,4 @@
     </main>
 </body>
 </html>
+

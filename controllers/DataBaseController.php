@@ -1,9 +1,9 @@
 <?php
 
-namespace app\controllers;
+namespace App\controllers;
 
 use mysqli;
-use App\models\Clientes;
+
 class DataBaseController
 {
     private $host = 'localhost';
@@ -14,12 +14,15 @@ class DataBaseController
 
     function __construct()
     {
-        $this->conex = new mysqli(
-            $this->host,
-            $this->user,
-            $this->pwd,
-            $this->db
-        );
+        $this->conex = new mysqli($this->host, $this->user, $this->pwd, $this->db);
+        if ($this->conex->connect_error) {
+            die("Connection failed: " . $this->conex->connect_error);
+        }
+    }
+
+    public function getConnection()
+    {
+        return $this->conex;
     }
 
     function execSql($sql)

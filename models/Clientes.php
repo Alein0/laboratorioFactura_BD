@@ -9,4 +9,5 @@ class Clientes extends Model
     protected $numeroDocumento = '';
     protected $email = '';
     protected $telefono = '';
+    
 }
