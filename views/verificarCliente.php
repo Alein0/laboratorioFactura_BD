@@ -41,10 +41,10 @@ if ($clienteExiste) {
     <h1><?php echo $mensaje; ?></h1>
     <br>
     <a href="menu.php">>Volver</a>
+    <a href="tablaClientes.php">>Editar datos del cliente</a>
     <?php if ($result) : ?>
         <br>
         <a href="CreacionFactura.php">Generar Factura</a>
     <?php endif; ?>
 </body>
 </html>
-

@@ -23,9 +23,12 @@
         <div>
             <label>Tipo de documento: </label>
             <select class="formulario" name="tipoDocumento" required>
-                <option value="">Seleccione su tipo de documento</option>
-                <option value="Tarjeta de Identidad">TI</option>
-                <option value="Cédula">CC</option>
+                <option>Seleccione su tipo de documento</option>
+                <option value="CC">CC</option>
+                <option value="CE">CE</option>
+                <option value="NIT">NIT</option>
+                <option value="TI">TI</option>
+                <option value="otro">Otro</option>
             </select>
         </div>
         <div>

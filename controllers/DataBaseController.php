@@ -11,13 +11,14 @@ class DataBaseController
     private $pwd = '';
     private $db = 'facturacion_tienda_db';
     private $conex;
-
-    function __construct()
+  function __construct()
     {
-        $this->conex = new mysqli($this->host, $this->user, $this->pwd, $this->db);
-        if ($this->conex->connect_error) {
-            die("Connection failed: " . $this->conex->connect_error);
-        }
+        $this->conex = new mysqli(
+            $this->host,
+            $this->user,
+            $this->pwd,
+            $this->db
+        );
     }
 
     public function getConnection()

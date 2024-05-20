@@ -10,8 +10,8 @@ class ClienteController
 
     public function clienteExiste($numeroDocumento)
     {
-        $db = new DataBaseController();
-        $conn = $db->getConnection();
+        $dataBase = new DataBaseController();
+        $conn =  $dataBase->getConnection();
         $query = $conn->prepare("SELECT COUNT(*) as count FROM clientes WHERE numeroDocumento = ?");
         $query->bind_param("s", $numeroDocumento);
         $query->execute();
@@ -29,6 +29,7 @@ class ClienteController
             return $clientes;
         }
         while ($item = $result->fetch_assoc()) {
+            
             $cliente = new Clientes();
             $cliente->set('id', $item['id']);
             $cliente->set('nombreCompleto', $item['nombreCompleto']);
@@ -55,7 +56,7 @@ class ClienteController
         return $result;
     }
 
-    function update($cliente) {
+    public function update($cliente) {
         $sql = "UPDATE clientes SET ";
         $sql .= "nombreCompleto = '" . $cliente->get('nombreCompleto') . "', ";
         $sql .= "tipoDocumento = '" . $cliente->get('tipoDocumento') . "', ";
@@ -63,11 +64,12 @@ class ClienteController
         $sql .= "email = '" . $cliente->get('email') . "', ";
         $sql .= "telefono = '" . $cliente->get('telefono') . "' ";
         $sql .= "WHERE id = " . $cliente->get('id');
+        
         $dataBase = new DataBaseController();
         $result = $dataBase->execSql($sql);
         $dataBase->close();
+        
         return $result;
     }
 
-    
 }

@@ -16,9 +16,9 @@
                 <nav class="menu">
                     <ul>
                         <li><a href="compraProductos.php">Productos</a></li>
+                        <li><a href="tablaClientes.php">Clientes</a></li>
                         <li><a href="#">Facturas</a></li>
-                        <li><a href="cerrarSesion.php">Cerrar sesión</a></li> <!-- Enlace al archivo PHP para cerrar sesión -->
-                    </ul>
+                        <li><a href="cerrarSesion.php">Cerrar sesión</a></li> 
                 </nav>
             </div>
         </section>
