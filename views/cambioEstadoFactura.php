@@ -6,17 +6,13 @@ include '../controllers/FacturaController.php';
 
 use App\controllers\FacturaController;
 use App\models\Facturas;
-
 $controller = new FacturaController();
 $factura = new Facturas();
 
-//$factura->set('idCliente', 1);
-$factura->set('idCliente', $_POST['idCliente']);
+$factura->set('refencia', $_POST['refencia']);
+$factura->set('estado', $_POST['estado']);
 
-//Falta hacer descuento
-//$factura->set('descuento', $_POST['descuento']);
-
-$result = $controller->crear($factura);
+$result = $controller->cambioestado($factura);
 
 ?>
 
@@ -30,9 +26,8 @@ $result = $controller->crear($factura);
 </head>
 
 <body>
-    <h1><?php echo $result ? 'Factura Creada' : 'No se pudo crear la factura'; ?></h1>
+    <h1><?php echo $result ? 'Estado de la factura cambiado' : 'No se pudo cambiar el estado de la factura'; ?></h1>
     <br>
     <a href="menu.php">menu</a>
 </body>
 </html>
-

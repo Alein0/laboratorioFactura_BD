@@ -25,13 +25,4 @@ class ProductoController
         $dataBase->close();
         return $articulos;
     }
-/*
-    if ($conn->query($sql) === TRUE) {
-        echo "El cliente ha sido guardado exitosamente.";
-        echo '<br>';
-        echo '<a href="../menu.php">Volver</a>';
-      } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-      }
-*/
 }
