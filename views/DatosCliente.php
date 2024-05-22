@@ -1,39 +1,56 @@
-<?php
-// Establecer conexión con la base de datos
 
- $host = 'localhost';
- $user = 'root';
- $pwd = '';
- $db = 'facturacion_tienda_db';
- $conex;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/index.css">
 
-$conn = new mysqli($host, $user, $pwd, $db);
+    <title>Aplicacion para generar facturas</title>
+</head>
+<body>
+    <header>
+        <h1>Clientes</h1>
+    </header>
+    <main>
+    <section>
+    <div class="container">
+    <form action="verificarCliente.php" method="post">
+        <div>
+            <label>Nombre y apellidos: </label>
+            <input class="formulario" type="text" name="nombre" placeholder="Ingrese su nombre completo" required>
+        </div>
+        <div>
+            <label>Tipo de documento: </label>
+            <select class="formulario" name="tipoDocumento" required>
+                <option>Seleccione su tipo de documento</option>
+                <option value="CC">CC</option>
+                <option value="CE">CE</option>
+                <option value="NIT">NIT</option>
+                <option value="TI">TI</option>
+                <option value="otro">Otro</option>
+            </select>
+        </div>
+        <div>
+            <label>Numero de documento: </label>
+            <input class="formulario" type="text" name="numeroDocumento" placeholder="Ingrese su documento" required>
+        </div>
+        <div>
+            <label>Telefono: </label>
+            <input class="formulario" type="text" name="telefono" placeholder="Ingrese su numero de telefono" required>
+        </div>
+        <div>
+            <label>Email: </label>
+            <input class="formulario" type="email" name="email" placeholder="Ingrese su correo por favor" required>
+        </div>
+        <div>
+            <br>
+            <input class="enviar" type="submit" value="Guardar datos">
+        </div>
+    </form>
+    </div>
+    </section>
+    </main>
+</body>
+</html>
 
-// Verificar la conexión
-if ($conn->connect_error) {
-  die("Conexión fallida: " . $conn->connect_error);
-}
-
-// Obtener los datos del formulario
-$nombre = $_POST['nombre'];
-$tipoDocumento = $_POST['tipoDocumento'];
-$numDocumento = $_POST['numDocumento'];
-$telefono = $_POST['telefono'];
-$correo = $_POST['correo'];
-
-// Preparar la consulta SQL
-$sql = "INSERT INTO clientes (nombreCompleto, tipoDocumento, numeroDocumento, telefono, email)
-        VALUES ('$nombre', '$tipoDocumento', '$numDocumento', '$telefono', '$correo')";
-
-// Ejecutar la consulta SQL
-if ($conn->query($sql) === TRUE) {
-  echo "El cliente ha sido guardado exitosamente.";
-  echo '<br>';
-  echo '<a href="../menu.php">Volver</a>';
-} else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-// Cerrar la conexión con la base de datos
-$conn->close();
-?>

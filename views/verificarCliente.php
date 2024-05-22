@@ -40,8 +40,11 @@ if ($clienteExiste) {
 <body>
     <h1><?php echo $mensaje; ?></h1>
     <br>
-    <a href="menu.php">>Volver</a>
-    <a href="tablaClientes.php">>Editar datos del cliente</a>
+    <a href="seleccionProducto.php">Continuar</a>
+    <br>
+    <a href="tablaClientes.php">Editar datos del cliente</a>
+    <br>
+    <a href="menu.php">Volver</a>
     <?php if ($result) : ?>
         <br>
         <a href="CreacionFactura.php">Generar Factura</a>
