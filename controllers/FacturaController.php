@@ -30,6 +30,7 @@ class FacturaController
 
     function crear($factura)
     {
+        date_default_timezone_set('America/Bogota');
         $fecha = date("Y-m-d H:i:s");
         $$fecharef = date("ymd-Hi");
         $estado = "Pagada";
