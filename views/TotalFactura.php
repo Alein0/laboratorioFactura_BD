@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,10 +13,10 @@
     <main>
     <section>
     <div class="container">
-    <form action="ValorFactura.php" method="post">
+    <form action="crearFactura.php" method="post">
         <div>
             <label>Valor Factura: </label>
-            <input class="formulario" type="text" name="valorFactura" placeholder="Ingrese el valor total de la factura" required>
+            <input class="formulario" type="number" name="valorFactura" min=100 placeholder="Ingrese el valor total de la factura" required>
         </div>   
         <div>
             <br>

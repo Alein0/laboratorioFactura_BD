@@ -72,4 +72,25 @@ class ClienteController
         return $result;
     }
 
+    function idCliente($documento) {
+        $dataBase = new DataBaseController();
+        $sql = "SELECT * FROM clientes WHERE numeroDocumento='".$documento."'";
+        $result = $dataBase->execSql($sql);
+        $clientes = [];
+        if ($result->num_rows == 0) {
+            return $clientes;
+        }
+        while ($item = $result->fetch_assoc()) {
+            
+            $cliente = new Clientes();
+            $cliente->set('id', $item['id']);
+            array_push($clientes, $cliente);
+
+            $id=$cliente->get('id');
+            setcookie('clienteId',$id, time() + (86400 * 30), "/");
+        }
+        $dataBase->close();
+        return $clientes;
+    }
+
 }

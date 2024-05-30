@@ -11,10 +11,6 @@ $controller = new FacturaController();
 $controller = new FacturaController();
 $factura = new Facturas();
 
-
-
-
-
 $factura->set('valorFactura', $_POST['valorFactura']);
 $result = $controller->crear($factura);
 

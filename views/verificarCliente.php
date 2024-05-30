@@ -19,7 +19,11 @@ $cliente->set('email', $_POST['email']);
 $cliente->set('telefono', $_POST['telefono']);
 
 $clienteExiste = $controller->clienteExiste($cliente->get('numeroDocumento'));
+$id = $controller->idCliente($cliente->get('numeroDocumento'));
 
+if ($id){
+    $mensajeid='';
+}
 if ($clienteExiste) {
     $result = false;
     $mensaje = 'El cliente ya se había ingresado';
@@ -46,9 +50,5 @@ if ($clienteExiste) {
     <a href="tablaClientes.php">Editar datos del cliente</a>
     <br>
     <a href="menu.php">Volver</a>
-    <?php if ($result) : ?>
-        <br>
-        <a href="CreacionFactura.php">Generar Factura</a>
-    <?php endif; ?>
 </body>
 </html>

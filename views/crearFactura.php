@@ -10,12 +10,7 @@ use App\models\Facturas;
 $controller = new FacturaController();
 $factura = new Facturas();
 
-//$factura->set('idCliente', 1);
-$factura->set('idCliente', $_POST['idCliente']);
-
-//Falta hacer descuento
-//$factura->set('descuento', $_POST['descuento']);
-
+$factura->set('valorFactura', $_POST['valorFactura']);
 $result = $controller->crear($factura);
 
 ?>

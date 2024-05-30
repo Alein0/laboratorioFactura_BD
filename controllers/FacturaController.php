@@ -33,15 +33,33 @@ class FacturaController
         date_default_timezone_set('America/Bogota');
         $fecha = date("Y-m-d H:i:s");
         $fecharef = date("ymd-Hi");
-        $referencia = $fecharef . "-" . $factura->get('idCliente');
-        $valorFactura = $factura->get('valorFactura');
-
+        if(isset($_COOKIE['clienteId'])) {
+            $id = $_COOKIE['clienteId'];
+        }
+        $referencia = $fecharef . "-" . $id;
+        
+        $total = $factura->get('valorFactura');
+        if($total>100000 && $total<=650000){
+            $porcentajeDescuento=5;
+            $descuento= $porcentajeDescuento/100;
+            $monto=$total*$descuento;
+            $valorFactura=$total-$monto;
+        }else if($total>650000){
+            $porcentajeDescuento=10;
+            $descuento= $porcentajeDescuento/100;
+            $monto=$total*$descuento;
+            $valorFactura=$total-$monto;
+        }else{
+            $porcentajeDescuento=0;
+            $valorFactura=$total;
+        }
+        
         $sql = "INSERT INTO facturas (refencia, fecha, idCliente, descuento, valorFactura) VALUES (";
         $sql .= "'" . $referencia . "',";
         $sql .= "'" . $fecha . "',";
-        $sql .= "'" . $factura->get('idCliente') . "',";
-        $sql .= "'" . $factura->get('descuento') . "',";
-        $sql .= "'" . $valorFactura . "')";
+        $sql .= "'" . $id . "',";
+        $sql .= "'" . $porcentajeDescuento . "',";
+        $sql .= "'" . $valorFactura. "')"; 
 
         $dataBase = new DataBaseController();
         $result = $dataBase->execSql($sql);
