@@ -9,7 +9,7 @@ class FacturaController
     function read()
     {
         $dataBase = new DataBaseController();
-        $sql = "select * from facturas";
+        $sql = "SELECT * FROM facturas";
         $result = $dataBase->execSql($sql);
         $facturas = [];
         if ($result->num_rows == 0) {
@@ -20,8 +20,8 @@ class FacturaController
             $factura->set('refencia', $item['refencia']);
             $factura->set('fecha', $item['fecha']);
             $factura->set('idCliente', $item['idCliente']);
-            $factura->set('estado', $item['estado']);
             $factura->set('descuento', $item['descuento']);
+            $factura->set('valorFactura', $item['valorFactura']);
             array_push($facturas, $factura);
         }
         $dataBase->close();
@@ -32,32 +32,21 @@ class FacturaController
     {
         date_default_timezone_set('America/Bogota');
         $fecha = date("Y-m-d H:i:s");
-        $$fecharef = date("ymd-Hi");
-        $estado = "Pagada";
-        $referencia = $fecha . "-" . $factura->get('idCliente');
+        $fecharef = date("ymd-Hi");
+        $referencia = $fecharef . "-" . $factura->get('idCliente');
+        $valorFactura = $factura->get('valorFactura');
 
-        $sql = "insert into facturas(refencia,fecha,idCliente,estado,descuento)values";
-        $sql .= "(";
+        $sql = "INSERT INTO facturas (refencia, fecha, idCliente, descuento, valorFactura) VALUES (";
         $sql .= "'" . $referencia . "',";
         $sql .= "'" . $fecha . "',";
         $sql .= "'" . $factura->get('idCliente') . "',";
-        $sql .= "'" . $estado . "',";
-        $sql .= "'" . $factura->get('descuento') . "'";
-        $sql .= ")";
-        $dataBase = new DataBaseController();
-        $result = $dataBase->execSql($sql);
-        $dataBase->close();
-        return $result;
-    }
+        $sql .= "'" . $factura->get('descuento') . "',";
+        $sql .= "'" . $valorFactura . "')";
 
-    function cambioestado($factura)
-    {
-        $sql = "UPDATE facturas SET ";
-        $sql .= "estado='" . $factura->get('estado') . "' ";
-        $sql .= "WHERE refencia=" . $factura->get('refencia');
         $dataBase = new DataBaseController();
         $result = $dataBase->execSql($sql);
         $dataBase->close();
         return $result;
     }
 }
+

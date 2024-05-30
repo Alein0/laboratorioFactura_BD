@@ -54,7 +54,7 @@ $clientes = $controller->read();
                 
             <?php else : ?>
                 <tr>
-                    <td colspan="5">No hay clientes guardados.</td>
+                    <td >No hay clientes guardados.</td>
                 </tr>
             <?php endif; ?>
         </tbody>

@@ -9,6 +9,7 @@ use App\models\Clientes;
 
 $controller = new ClienteController();
 
+
 $cliente = new Clientes();
 $cliente->set('id', $_POST['id'] ?? null);
 $cliente->set('nombreCompleto', $_POST['nombre']);
@@ -40,7 +41,7 @@ if ($clienteExiste) {
 <body>
     <h1><?php echo $mensaje; ?></h1>
     <br>
-    <a href="seleccionProducto.php">Continuar</a>
+    <a href="TotalFactura.php">Continuar</a>
     <br>
     <a href="tablaClientes.php">Editar datos del cliente</a>
     <br>
