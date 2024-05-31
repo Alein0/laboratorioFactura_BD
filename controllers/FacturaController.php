@@ -33,10 +33,11 @@ class FacturaController
         date_default_timezone_set('America/Bogota');
         $fecha = date("Y-m-d H:i:s");
         $fecharef = date("ymd-Hi");
+        $referencia = $fecharef . "-" . $id;
+
         if(isset($_COOKIE['clienteId'])) {
             $id = $_COOKIE['clienteId'];
         }
-        $referencia = $fecharef . "-" . $id;
         
         $total = $factura->get('valorFactura');
         if($total>100000 && $total<=650000){
@@ -63,7 +64,11 @@ class FacturaController
 
         $dataBase = new DataBaseController();
         $result = $dataBase->execSql($sql);
+
         $dataBase->close();
+
+        $_SERVER['HTTP_COOKIE'];
+
         return $result;
     }
 }
