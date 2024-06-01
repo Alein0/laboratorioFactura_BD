@@ -74,26 +74,18 @@ class ClienteController
 
     function idCliente($documento) {
         $dataBase = new DataBaseController();
-        $sql = "SELECT * FROM clientes WHERE numeroDocumento='".$documento."'";
+        $sql = "SELECT id FROM clientes WHERE numeroDocumento='$documento'";
         $result = $dataBase->execSql($sql);
         $clientes = [];
         if ($result->num_rows == 0) {
-            return $clientes;
+            return null;
         }
-        $_SERVER['HTTP_COOKIE'];
-        while ($item = $result->fetch_assoc()) {
-            
-            $cliente = new Clientes();
-            $cliente->set('id', $item['id']);
-            array_push($clientes, $cliente);
-
-            $id=$cliente->get('id');
-            setcookie('clienteId',$id, time() + (86400 * 30), "/");
-        }
+        $item = $result->fetch_assoc();
+        $id = $item['id'];
+        setcookie('clienteId', $id, time() + (86400 * 30), "/");
         $dataBase->close();
-        return $clientes;
+        return $id;
     }
-
     function ImprimirCliente($id) {
         $dataBase = new DataBaseController();
         $sql = "SELECT * FROM clientes WHERE id = '$id'";

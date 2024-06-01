@@ -1,3 +1,13 @@
+<?php
+require '../models/Usuario.php';
+require '../controllers/UsuarioController.php';
+
+use app\controllers\UsuarioController;
+
+$controller = new UsuarioController();
+$controller->validarSesion();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,7 +18,10 @@
 </head>
 <body>
     <header>
-        <h1>Menú</h1>   
+        <h1>Menú   
+            <?php echo $_SESSION['iniciarSesion'];?>
+           
+        </h1>
     </header>
     <main>
         <section>
@@ -18,7 +31,7 @@
                         <li><a href="datosCliente.php">Comprar</a></li>
                         <li><a href="tablaClientes.php">Clientes</a></li>
                         <li><a href="FacturasGuardadas.php">Facturas</a></li>
-                        <li><a href="cerrarSesion.php">Cerrar sesión</a></li> 
+                        <li> <a href="cerrarSesion.php">Cerrar sesion</a></li> 
                 </nav>
             </div>
         </section>

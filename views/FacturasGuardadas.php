@@ -43,20 +43,26 @@ $clientes = $clienteController->read();
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($facturas as $factura): ?>
-                                <?php 
-                                $cliente = $clienteController->ImprimirCliente($factura->get('idCliente'));
-                                if ($cliente): 
-                                ?>
-                                    <tr>
-                                        <td><?php echo $cliente->get('nombreCompleto'); ?></td>
-                                        <td><?php echo $cliente->get('numeroDocumento'); ?></td>
-                                        <td><a href="Imprimirfactura.php?referencia=<?php echo $factura->get('refencia'); ?>">Ver factura</a></td>
-                                    </tr>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+            <?php if (!empty($clientes)) : ?>
+                <?php foreach ($clientes as $item) : ?>
+                    <tr>
+                        <td><?php echo $item->get('nombreCompleto'); ?></td>
+                        <td><?php echo $item->get('numeroDocumento'); ?></td>
+                        <td>
+              <form action="Imprimirfactura.php" method="get">
+            <input type="hidden" name="referencia" value="<?php echo $item->get('id'); ?>">
+            <input type="submit" value="Ver factura">
+                </form>
+           </td>
+
+                    </tr>     
+                <?php endforeach; ?>  
+            <?php else : ?>
+                <tr>
+                    <td >No hay clientes guardados.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
                 <?php else: ?>
                     <p>No se encontraron facturas guardadas.</p>
                 <?php endif; ?>

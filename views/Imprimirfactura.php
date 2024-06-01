@@ -11,26 +11,18 @@ use App\controllers\ClienteController;
 use App\models\Facturas;
 use App\models\Clientes;
 
-$referencia = $_GET['referencia'] ?? $_POST['referencia'] ?? null;
-
-if (!$referencia) {
-    die("No se proporcionó una referencia de factura.");
+$referencia = $_GET['referencia'] ?? null;
+if ($referencia === null) {
+   
+    echo "Referencia de factura no encontrada.";
+    exit(); 
 }
 
-$facturaController = new FacturaController(); 
-$clienteController = new ClienteController(); 
-
+$facturaController = new FacturaController();
 $factura = $facturaController->ImprimirFactura($referencia);
 
-if (!$factura) {
-    die("Factura no encontrada.");
-}
-
-$cliente = $clienteController->ImprimirCliente($factura->get('idCliente'));
-
-if (!$cliente) {
-    die("Cliente no encontrado.");
-}
+$clienteController = new ClienteController();
+$cliente = $clienteController->ImprimirCliente($_GET['referencia']);
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +38,7 @@ if (!$cliente) {
     <div class="container">
         <h1>Factura</h1>
         
+        <?php if ($cliente): ?>
         <div class="AlinearDatos">
             <h2>Datos del Cliente</h2>
             <p><strong>Nombre Completo:</strong> <?php echo $cliente->get('nombreCompleto'); ?></p>
@@ -54,14 +47,25 @@ if (!$cliente) {
             <p><strong>Email:</strong> <?php echo $cliente->get('email'); ?></p>
             <p><strong>Teléfono:</strong> <?php echo $cliente->get('telefono'); ?></p>
         </div>
+        <?php else: ?>
+        <div class="AlinearDatos">
+            <p>Cliente no encontrado</p>
+        </div>
+        <?php endif; ?>
         
+        <?php if ($factura): ?>
         <div class="AlinearDatos">
             <h2>Datos de la Factura</h2>
-            <p><strong>Referencia:</strong> <?php echo $factura->get('refencia'); ?></p>
+            <p><strong>Referencia:</strong> <?php echo $factura->get('referencia'); ?></p>
             <p><strong>Fecha:</strong> <?php echo $factura->get('fecha'); ?></p>
             <p><strong>Descuento:</strong> <?php echo $factura->get('descuento'); ?>%</p>
             <p><strong>Valor de la Factura:</strong> $<?php echo number_format($factura->get('valorFactura')); ?></p>
         </div>
+        <?php else: ?>
+        <div class="AlinearDatos">
+            <p>Factura no encontrada</p>
+        </div>
+        <?php endif; ?>
 
         <div class="AlinearBoton">
             <form action="menu.php" >
@@ -71,4 +75,3 @@ if (!$cliente) {
     </div>
 </body>
 </html>
-

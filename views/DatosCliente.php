@@ -1,14 +1,28 @@
+<?php
+require '../models/Usuario.php';
+require '../controllers/UsuarioController.php';
+
+use app\controllers\UsuarioController;
+
+$controller = new UsuarioController();
+$controller->validarSesion();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/index.css">
-    <title>Aplicación para generar facturas</title>
+
+    <title>Aplicacion para generar facturas</title>
 </head>
 <body>
     <header>
-        <h1>Registro de Cliente</h1>
+        <h1>Clientes
+            <?php echo $_SESSION['iniciarSesion'];?>
+           
+        </h1>
     </header>
     <main>
     <section>
@@ -44,6 +58,8 @@
         <div>
             <br>
             <input class="enviar" type="submit" value="Guardar datos">
+            <br>
+            <a href="cerrarSesion.php">Cerrar sesion</a>
         </div>
     </form>
     </div>
