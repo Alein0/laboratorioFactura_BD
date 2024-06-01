@@ -80,6 +80,7 @@ class ClienteController
         if ($result->num_rows == 0) {
             return $clientes;
         }
+        $_SERVER['HTTP_COOKIE'];
         while ($item = $result->fetch_assoc()) {
             
             $cliente = new Clientes();

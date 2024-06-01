@@ -1,3 +1,12 @@
+<?php
+require '../models/Usuario.php';
+require '../controllers/UsuarioController.php';
+
+use app\controllers\UsuarioController;
+
+$controller = new UsuarioController();
+$controller->validarSesion();
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -10,7 +19,10 @@
 </head>
 <body>
     <header>
-        <h1>Clientes</h1>
+        <h1>Clientes
+            <?php echo $_SESSION['iniciarSesion'];?>
+            <a href="cerrarSesion.php">Cerrar sesion</a>
+        </h1>
     </header>
     <main>
     <section>

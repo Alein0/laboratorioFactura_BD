@@ -24,13 +24,10 @@ class UsuarioController {
         }
     
     function validarSesion() {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
 
+        session_start();
         if (empty($_SESSION['iniciarSesion'])) {
             header('Location: ../index.php');
-            exit();
         }
     }
 }

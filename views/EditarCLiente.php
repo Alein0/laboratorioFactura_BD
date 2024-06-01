@@ -3,6 +3,13 @@ include '../models/Model.php';
 include '../models/Clientes.php';
 include '../controllers/DataBaseController.php';
 include '../controllers/ClienteController.php';
+require '../models/Usuario.php';
+require '../controllers/UsuarioController.php';
+
+use app\controllers\UsuarioController;
+
+$controller = new UsuarioController();
+$controller->validarSesion();
 
 use App\controllers\DataBaseController;
 
@@ -25,7 +32,10 @@ $record = $result->fetch_assoc();
 </head>
 <body>
     <header>
-        <h1>Editar Cliente</h1>
+        <h1>Editar Cliente
+            <?php echo $_SESSION['iniciarSesion'];?>
+            <a href="cerrarSesion.php">Cerrar sesion</a>
+        </h1>
     </header>
     <main>
         <section>
