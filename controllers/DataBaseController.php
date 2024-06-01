@@ -11,8 +11,7 @@ class DataBaseController
     private $pwd = '';
     private $db = 'facturacion_tienda_db';
     private $conex;
-
-    function __construct()
+  function __construct()
     {
         $this->conex = new mysqli(
             $this->host,
@@ -20,6 +19,11 @@ class DataBaseController
             $this->pwd,
             $this->db
         );
+    }
+
+    public function getConnection()
+    {
+        return $this->conex;
     }
 
     function execSql($sql)

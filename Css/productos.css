@@ -1,0 +1,92 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+
+.container {
+    max-width: 600px; 
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #000000;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+header {
+    padding: 16px;
+    text-align: center;
+    background-color: #7295e7;
+    font-size: 24px;
+    font-weight: bold;
+ 
+}
+
+
+h1 {
+    font-weight: 800;
+    text-align: center;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+.formulario {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.enviar {
+    width: 200px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #7295e7;
+    color: #000000;
+}
+
+
+
+tr:hover {
+    background-color: #ddd;
+}
+
+
+

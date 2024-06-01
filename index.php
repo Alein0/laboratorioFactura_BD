@@ -1,38 +1,41 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicacion para generar piedra</title>
-
-
+    <link rel="stylesheet" href="CSS/index.css">
+    <title>Aplicacion para generar facturas</title>
 </head>
 <body>
+    <form action="views/inicioSesion.php" method="post">
+    <header>
+        <h1>Generador de facturas</h1>   
+    </header>
+    <main>
+    <section>
+    <div class="container">
      <div>
+     <div >
+        <img src="img/inicio.png" class="imgsesion">
+        </div>
             <label>Usuario: </label>
-            <input type="text" name="usuario" required>
+            <input class="formulario" type="text" name="usuario" placeholder="Ingrese su usuario por favor" required>
         </div>
         <div>
             <label>Contraseña: </label>
-            <input type="pwd" name="contraseña" required>
+           
+            <input class="formulario" type="password" name="pwd" placeholder="Ingrese su contraseña por favor" required>
         </div>
-        </form>
-    <table>
-        <thead>
-            <tr>
-                <th>Usuario</th>
-                <th>Contraseña</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            foreach ($contactos as $item) {
-                echo '<tr>';
-                echo '  <td>' . $item->get('usuario') . '</td>';
-                echo '  <td>' . $item->get('contraseña') . '</td>';
-                echo '</tr>';
-            }
-            ?>
-        </tbody>
+        <div> <br>
+        <input class="enviar" type="submit" value="Iniciar sesión">
+        </div>
+       
+        </form>  
+        
+ 
+        </main>
+         </section>
+</div>
     </body>
 </html>
+
