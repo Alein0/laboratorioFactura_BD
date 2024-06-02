@@ -33,14 +33,13 @@ $record = $result->fetch_assoc();
 <body>
     <header>
         <h1>Editar Cliente
-            <?php echo $_SESSION['iniciarSesion'];?>
             <a href="cerrarSesion.php">Cerrar sesion</a>
         </h1>
     </header>
     <main>
         <section>
             <div class="container">
-                <form action="verificarCliente.php" method="post">
+                <form action="guardarClienteEditado.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $record['id']; ?>">
                     <div>
                         <label>Nombre y apellidos: </label>

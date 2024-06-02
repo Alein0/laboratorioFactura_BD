@@ -14,30 +14,24 @@ $controller->validarSesion();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/index.css">
-    <title>Aplicacion para generar facturas</title>
+    <title>Buscar Facturas</title>
 </head>
 <body>
     <header>
-        <h1>Valor factura
+        <h1>Editar Cliente
             <a href="cerrarSesion.php">Cerrar sesion</a>
         </h1>
     </header>
-    <main>
-    <section>
     <div class="container">
-    <form action="crearFactura.php" method="post">
+    <form action="facturas.php" method="post">
         <div>
-            <label>Valor Factura: </label>
-            <input class="formulario" type="number" name="valorFactura" min=100 placeholder="Ingrese el valor total de la factura" required>
+            <label>Numero de Documento: </label>
+            <input class="formulario" type="text" name="numeroDocumento" placeholder="Ingrese su numero de Documento" required>
         </div>   
         <div>
             <br>
-            <input class="enviar" type="submit" value="Guardar valor">
+            <input class="enviar" type="submit" value="Buscar Facturas">
         </div>
     </form>
-    </div>
-    </section>
-    </main>
-</body>
+    </body>
 </html>
-

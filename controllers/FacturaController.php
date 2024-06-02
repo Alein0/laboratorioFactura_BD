@@ -36,9 +36,10 @@ class FacturaController
         
         date_default_timezone_set('America/Bogota');
         $fecha = date("Y-m-d H:i:s");
-        $fecharef = date("ymd-Hi");
+        $fecharef = date("ymd-His");
         $referencia = $fecharef . "-" . $id;
 
+            setcookie('reFact',$referencia, time() + (86400 * 30), "/");
         
         $total = $factura->get('valorFactura');
         if($total>100000 && $total<=650000){
@@ -71,22 +72,57 @@ class FacturaController
         return $result;
     }
 
-    function ImprimirFactura($referencia) {
+    function mostrarFactInsta()
+    {
         $dataBase = new DataBaseController();
-        $sql = "SELECT * FROM facturas WHERE refencia = '$referencia'";
-        $result = $dataBase->execSql($sql);
-        if ($result->num_rows == 0) {
-            return null;
+        if(isset($_COOKIE['clienteId'])) {
+            $id = $_COOKIE['clienteId'];
         }
-        $item = $result->fetch_assoc();
-        $factura = new Facturas();
-        $factura->set('refencia', $item['refencia']);
-        $factura->set('fecha', $item['fecha']);
-        $factura->set('idCliente', $item['idCliente']);
-        $factura->set('descuento', $item['descuento']);
-        $factura->set('valorFactura', $item['valorFactura']);
+        if(isset($_COOKIE['reFact'])) {
+            $reFact = $_COOKIE['reFact'];
+        }
+        $sql = "SELECT * FROM facturas WHERE idCliente='".$id."' AND refencia='".$reFact."'";
+        $result = $dataBase->execSql($sql);
+        $facturas = [];
+        if ($result->num_rows == 0) {
+            return $facturas;
+        }
+        while ($item = $result->fetch_assoc()) {
+            $factura = new Facturas();
+            $factura->set('refencia', $item['refencia']);
+            $factura->set('fecha', $item['fecha']);
+            $factura->set('idCliente', $item['idCliente']);
+            $factura->set('descuento', $item['descuento']);
+            $factura->set('valorFactura', $item['valorFactura']);
+            array_push($facturas, $factura);
+        }
         $dataBase->close();
-        return $factura;
+        return $facturas;
+    }
+
+    function mostrarFacturasCliente()
+    {
+        $dataBase = new DataBaseController();
+        if(isset($_COOKIE['clienteId'])) {
+            $id = $_COOKIE['clienteId'];
+        }
+        $sql = "SELECT * FROM facturas WHERE idCliente='".$id."'";
+        $result = $dataBase->execSql($sql);
+        $facturas = [];
+        if ($result->num_rows == 0) {
+            return $facturas;
+        }
+        while ($item = $result->fetch_assoc()) {
+            $factura = new Facturas();
+            $factura->set('refencia', $item['refencia']);
+            $factura->set('fecha', $item['fecha']);
+            $factura->set('idCliente', $item['idCliente']);
+            $factura->set('descuento', $item['descuento']);
+            $factura->set('valorFactura', $item['valorFactura']);
+            array_push($facturas, $factura);
+        }
+        $dataBase->close();
+        return $facturas;
     }
 }
 

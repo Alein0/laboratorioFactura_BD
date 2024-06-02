@@ -20,8 +20,7 @@ $controller->validarSesion();
 <body>
     <header>
         <h1>Clientes
-            <?php echo $_SESSION['iniciarSesion'];?>
-           
+            <a href="cerrarSesion.php">Cerrar sesion</a>
         </h1>
     </header>
     <main>
@@ -29,27 +28,27 @@ $controller->validarSesion();
     <div class="container">
     <form action="verificarCliente.php" method="post">
         <div>
-            <label>Nombre Completo: </label>
+            <label>Nombre y apellidos: </label>
             <input class="formulario" type="text" name="nombre" placeholder="Ingrese su nombre completo" required>
         </div>
         <div>
-            <label>Tipo de Documento: </label>
+            <label>Tipo de documento: </label>
             <select class="formulario" name="tipoDocumento" required>
-                <option value="">Seleccione su tipo de documento</option>
+                <option>Seleccione su tipo de documento</option>
                 <option value="CC">CC</option>
                 <option value="CE">CE</option>
                 <option value="NIT">NIT</option>
                 <option value="TI">TI</option>
-                <option value="Otro">Otro</option>
+                <option value="otro">Otro</option>
             </select>
         </div>
         <div>
-            <label>Número de Documento: </label>
+            <label>Numero de documento: </label>
             <input class="formulario" type="text" name="numeroDocumento" placeholder="Ingrese su documento" required>
         </div>
         <div>
-            <label>Teléfono: </label>
-            <input class="formulario" type="text" name="telefono" placeholder="Ingrese su número de teléfono" required>
+            <label>Telefono: </label>
+            <input class="formulario" type="text" name="telefono" placeholder="Ingrese su numero de telefono" required>
         </div>
         <div>
             <label>Email: </label>
@@ -58,8 +57,6 @@ $controller->validarSesion();
         <div>
             <br>
             <input class="enviar" type="submit" value="Guardar datos">
-            <br>
-            <a href="cerrarSesion.php">Cerrar sesion</a>
         </div>
     </form>
     </div>

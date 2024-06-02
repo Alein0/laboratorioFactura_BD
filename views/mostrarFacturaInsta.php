@@ -5,6 +5,8 @@ include '../controllers/DataBaseController.php';
 include '../controllers/ClienteController.php';
 require '../models/Usuario.php';
 require '../controllers/UsuarioController.php';
+include '../controllers/FacturaController.php';
+include '../models/Facturas.php';
 
 use app\controllers\UsuarioController;
 
@@ -14,7 +16,13 @@ $controller->validarSesion();
 use App\controllers\ClienteController;
 
 $controller = new ClienteController();
-$clientes = $controller->read(); 
+$clientes = $controller->mostrarClienInsta(); 
+
+use app\controllers\FacturaController;
+
+$controller = new FacturaController();
+$factura = $controller->mostrarFactInsta(); 
+
 ?>
 
 <!DOCTYPE html>
@@ -24,12 +32,12 @@ $clientes = $controller->read();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/productos.css">
-    <title>Clientes guardados</title>
+    <title>Factura Generada</title>
 </head>
 
 <body>
     <header>
-        <h1>Clientes guardados
+        <h1>Cliente
             <a href="cerrarSesion.php">Cerrar sesion</a>
         </h1>
     </header>
@@ -41,7 +49,6 @@ $clientes = $controller->read();
                 <th>Numero documento</th>
                 <th>Email</th>
                 <th>Telefono</th>
-                <th>Editar</th>
             </tr>
         </thead>
         <tbody>
@@ -53,22 +60,51 @@ $clientes = $controller->read();
                         <td><?php echo $item->get('numeroDocumento'); ?></td>
                         <td><?php echo $item->get('email'); ?></td>
                         <td><?php echo $item->get('telefono'); ?></td>
-                        <td><form action="EditarCliente.php?id=<?php echo $item->get('id'); ?>" method="post">
-
-                                <input type="submit" value="Editar" >
-                            </form></td>
+                    </tr>
+                <?php endforeach; ?>
+                
+            <?php else : ?>
+                <tr>
+                    <td >No hay cliente guardado</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+    <header>
+        <h1>Factura</h1>
+    </header>
+    <table>
+        <thead>
+            <tr>
+                <th>Referencia</th>
+                <th>Fecha</th>
+                <th>id Cliente</th>
+                <th>Descuento</th>
+                <th>Valor Factura</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($factura)) : ?>
+                <?php foreach ($factura as $item) : ?>
+                    <tr>
+                        <td><?php echo $item->get('refencia'); ?></td>
+                        <td><?php echo $item->get('fecha'); ?></td>
+                        <td><?php echo $item->get('idCliente'); ?></td>
+                        <td><?php echo $item->get('descuento'); ?></td>
+                        <td><?php echo $item->get('valorFactura'); ?></td> 
                     </tr>
                   
                 <?php endforeach; ?>
                 
             <?php else : ?>
                 <tr>
-                    <td >No hay clientes guardados.</td>
+                    <td >No hay factura guardada.</td>
                 </tr>
             <?php endif; ?>
         </tbody>
     </table>
-
+    <br>
+    <a href="menu.php">Menu</a>
 </body>
 
 </html>

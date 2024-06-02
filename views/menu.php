@@ -19,8 +19,7 @@ $controller->validarSesion();
 <body>
     <header>
         <h1>Menú   
-            <?php echo $_SESSION['iniciarSesion'];?>
-           
+            <a href="cerrarSesion.php">Cerrar sesion</a>
         </h1>
     </header>
     <main>
@@ -30,8 +29,8 @@ $controller->validarSesion();
                     <ul>
                         <li><a href="datosCliente.php">Comprar</a></li>
                         <li><a href="tablaClientes.php">Clientes</a></li>
-                        <li><a href="FacturasGuardadas.php">Facturas</a></li>
-                        <li> <a href="cerrarSesion.php">Cerrar sesion</a></li> 
+                        <li><a href="buscarFacturas.php">Facturas</a></li>
+                        <li><a href="cerrarSesion.php">Cerrar sesión</a></li> 
                 </nav>
             </div>
         </section>

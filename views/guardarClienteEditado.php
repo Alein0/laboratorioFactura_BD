@@ -9,7 +9,6 @@ use App\models\Clientes;
 
 $controller = new ClienteController();
 
-
 $cliente = new Clientes();
 $cliente->set('id', $_POST['id'] ?? null);
 $cliente->set('nombreCompleto', $_POST['nombre']);
@@ -21,18 +20,14 @@ $cliente->set('telefono', $_POST['telefono']);
 $clienteExiste = $controller->clienteExiste($cliente->get('numeroDocumento'));
 if ($clienteExiste) {
     $result = false;
-    $mensaje = 'El cliente ya se había ingresado';
+    $mensaje = 'Cliente Editado';
 } else {
     $result = empty($cliente->get('id'))
-        ? $controller->create($cliente)
+        ? $controller->editar($cliente)
         : $controller->update($cliente);
-    $mensaje = $result ? 'Datos guardados' : 'No se pudo guardar el registro';
+    $mensaje = $result ? 'Datos Editados' : 'No se pudo Editar el Cliente';
 }
 
-$id = $controller->idCliente($cliente->get('numeroDocumento'));
-if ($id){
-    $mensajeid='';
-}
 ?>
 
 <!DOCTYPE html>
@@ -40,15 +35,11 @@ if ($id){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Cliente</title>
+    <title>Cliente Editado</title>
 </head>
 <body>
     <h1><?php echo $mensaje; ?></h1>
     <br>
-    <a href="TotalFactura.php">Continuar</a>
-    <br>
-    <a href="tablaClientes.php">Editar datos del cliente</a>
-    <br>
-    <a href="menu.php">Volver</a>
+    <a href="menu.php">Menu</a>
 </body>
 </html>
