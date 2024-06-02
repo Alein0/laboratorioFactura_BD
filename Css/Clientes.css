@@ -4,11 +4,6 @@
     font-family: Arial, sans-serif;
 }
 
-main {
-    padding: 120px;
-    text-align: center;
-}
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
@@ -16,24 +11,25 @@ body {
 
 .container {
     max-width: 400px;
-    margin: 5px auto;
+    margin: 20px auto; 
     padding: 30px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; 
 }
 
 header {
     padding: 8px;
-    text-align: center;
-    background-color:  #343a40;
+    background-color: #343a40;
     font-size: 20px;
-    color: #fff; 
+    color: white;
 }
 
 h1 {
     font-weight: 800;
-    margin: 1rem 0 0;
+    margin: 1rem 0;
+    text-align: center; 
 }
 
 label {
@@ -44,22 +40,36 @@ label {
 .formulario {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
 }
 
 .enviar {
-    width: 200px;
+    width: 100%;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color:#007bff;
+    background-color: #007bff;
     color: #fff;
     cursor: pointer;
 }
 
-.imgsesion {
-    width: 100px;
+.btn {
+    padding: 0.3em 0.8em; 
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px; 
+    margin-right: 10px; 
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

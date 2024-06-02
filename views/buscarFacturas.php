@@ -13,15 +13,16 @@ $controller->validarSesion();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/Clientes.css">
     <title>Buscar Facturas</title>
 </head>
 <body>
-    <header>
-        <h1>Editar Cliente
-            <a href="cerrarSesion.php">Cerrar sesion</a>
-        </h1>
-    </header>
+<header>
+    <div class="header-container">
+        <h1> Buscar facturas</h1>
+        <a href="cerrarSesion.php" class="btn">Cerrar sesión</a>
+    </div>
+</header>
     <div class="container">
     <form action="facturas.php" method="post">
         <div>

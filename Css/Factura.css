@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    background-color: #343a40;
+    color: white;
+}
+
+.header-container h1 {
+    margin: 0;
+}
+
+.Botoncerrarsesion {
+    padding: 0.5em 1em;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.section-container {
+    margin: 2em auto;
+    max-width: 800px;
+    background-color: white;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-container h2 {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    color: #007bff;
+}
+
+.invoice-section {
+    margin-bottom: 2em;
+}
+
+.invoice-section p {
+    margin: 0.5em 0;
+    font-size: 1.1em;
+}
+
+.invoice-section p strong {
+    display: inline-block;
+    width: 150px;
+}
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #343a40;
+    color: white;
+    margin-top: 2em;
+}
+

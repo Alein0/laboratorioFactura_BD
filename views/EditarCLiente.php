@@ -27,19 +27,20 @@ $record = $result->fetch_assoc();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/Clientes.css">
     <title>Editar Cliente</title>
 </head>
 <body>
-    <header>
-        <h1>Editar Cliente
-            <a href="cerrarSesion.php">Cerrar sesion</a>
-        </h1>
-    </header>
+<header>
+    <div class="header-container">
+        <h1>Editar Cliente</h1>
+        <a href="cerrarSesion.php" class="btn">Cerrar sesión</a>
+    </div>
+</header>
     <main>
         <section>
             <div class="container">
-                <form action="guardarClienteEditado.php" method="post">
+            <form action="guardarClienteEditado.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $record['id']; ?>">
                     <div>
                         <label>Nombre y apellidos: </label>

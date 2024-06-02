@@ -27,84 +27,53 @@ $factura = $controller->mostrarFactInsta();
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/productos.css">
-    <title>Factura Generada</title>
+    <link rel="stylesheet" href="../CSS/Factura.css">
+    <title>Facturas Del Cliente</title>
 </head>
-
 <body>
     <header>
-        <h1>Cliente
-            <a href="cerrarSesion.php">Cerrar sesion</a>
-        </h1>
+        <div class="header-container">
+            <h1>Facturas del Cliente</h1>
+            <a href="cerrarSesion.php" class="Botoncerrarsesion">Cerrar sesión</a>
+        </div>
     </header>
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre completo</th>
-                <th>Tipo documento</th>
-                <th>Numero documento</th>
-                <th>Email</th>
-                <th>Telefono</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (!empty($clientes)) : ?>
-                <?php foreach ($clientes as $item) : ?>
-                    <tr>
-                        <td><?php echo $item->get('nombreCompleto'); ?></td>
-                        <td><?php echo $item->get('tipoDocumento'); ?></td>
-                        <td><?php echo $item->get('numeroDocumento'); ?></td>
-                        <td><?php echo $item->get('email'); ?></td>
-                        <td><?php echo $item->get('telefono'); ?></td>
-                    </tr>
-                <?php endforeach; ?>
-                
-            <?php else : ?>
-                <tr>
-                    <td >No hay cliente guardado</td>
-                </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
-    <header>
-        <h1>Factura</h1>
-    </header>
-    <table>
-        <thead>
-            <tr>
-                <th>Referencia</th>
-                <th>Fecha</th>
-                <th>id Cliente</th>
-                <th>Descuento</th>
-                <th>Valor Factura</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (!empty($factura)) : ?>
-                <?php foreach ($factura as $item) : ?>
-                    <tr>
-                        <td><?php echo $item->get('refencia'); ?></td>
-                        <td><?php echo $item->get('fecha'); ?></td>
-                        <td><?php echo $item->get('idCliente'); ?></td>
-                        <td><?php echo $item->get('descuento'); ?></td>
-                        <td><?php echo $item->get('valorFactura'); ?></td> 
-                    </tr>
-                  
-                <?php endforeach; ?>
-                
-            <?php else : ?>
-                <tr>
-                    <td >No hay factura guardada.</td>
-                </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
-    <br>
-    <a href="menu.php">Menu</a>
+    <section class="section-container">
+        <h2>Datos del Cliente</h2>
+        <?php if (!empty($clientes)) : ?>
+            <?php foreach ($clientes as $item) : ?>
+                <div class="invoice-section">
+                    <p><strong>Nombre completo:</strong> <?php echo $item->get('nombreCompleto'); ?></p>
+                    <p><strong>Tipo documento:</strong> <?php echo $item->get('tipoDocumento'); ?></p>
+                    <p><strong>Número documento:</strong> <?php echo $item->get('numeroDocumento'); ?></p>
+                    <p><strong>Email:</strong> <?php echo $item->get('email'); ?></p>
+                    <p><strong>Teléfono:</strong> <?php echo $item->get('telefono'); ?></p>
+                </div>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <p>No hay cliente guardado</p>
+        <?php endif; ?>
+    </section>
+    <section class="section-container">
+        <h2>Facturas</h2>
+        <?php if (!empty($factura)) : ?>
+            <?php foreach ($factura as $item) : ?>
+                <div class="invoice-section">
+                    <p><strong>Referencia:</strong> <?php echo $item->get('refencia'); ?></p>
+                    <p><strong>Fecha:</strong> <?php echo $item->get('fecha'); ?></p>
+                    <p><strong>ID Cliente:</strong> <?php echo $item->get('idCliente'); ?></p>
+                    <p><strong>Descuento:</strong> <?php echo $item->get('descuento'); ?>%</p>
+                    <p><strong>Valor Factura:</strong> $<?php echo number_format($item->get('valorFactura')); ?></p>
+                </div>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <p>No hay facturas guardadas.</p>
+        <?php endif; ?>
+    </section>
+    <footer>
+        <a href="menu.php" class="Botoncerrarsesion">Menú</a>
+    </footer>
 </body>
-
 </html>

@@ -29,9 +29,10 @@ $clientes = $controller->read();
 
 <body>
     <header>
-        <h1>Clientes guardados
-            <a href="cerrarSesion.php">Cerrar sesion</a>
-        </h1>
+        <div class="header-container">
+            <h1>Clientes guardados</h1>
+            <a href="cerrarSesion.php" class="btn-small">Cerrar sesión</a>
+        </div>
     </header>
     <table>
         <thead>
@@ -54,11 +55,9 @@ $clientes = $controller->read();
                         <td><?php echo $item->get('email'); ?></td>
                         <td><?php echo $item->get('telefono'); ?></td>
                         <td><form action="EditarCliente.php?id=<?php echo $item->get('id'); ?>" method="post">
-
                                 <input type="submit" value="Editar" >
                             </form></td>
                     </tr>
-                  
                 <?php endforeach; ?>
                 
             <?php else : ?>
@@ -68,7 +67,6 @@ $clientes = $controller->read();
             <?php endif; ?>
         </tbody>
     </table>
-
 </body>
 
 </html>
